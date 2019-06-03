@@ -3,17 +3,19 @@ const async = require('async')
 const url1 = process.argv[2]
 const url2 = process.argv[3]
 
-async.each([url1, url2], function(item, done){
+async.map([url1, url2], function(item, done){
+    var body = ''
     http.get(item, function(res) {
         res.on('data', function(chunk) {
+            body += chunk.toString()
         })
         res.on('end', function() {
-            done(null)
+            done(null, body)
         })
     })
+    console.log()
 },
 function(err){
     if (err) 
         return console.log(err)
   });
-
