@@ -14,8 +14,8 @@ async.map([url1, url2], function(item, done){
         })
     })
 },
-function(err, body){
+function(err, results){
     if (err) 
         return console.log(err)
-        console.log(body)
+    console.log(results)
   });
